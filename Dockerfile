@@ -1,11 +1,4 @@
 ARG FFMPEG_VERSION=3.4.5
-FROM lsiobase/alpine:3.8
-
-# set version label
-ARG BUILD_DATE
-ARG VERSION
-LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
-LABEL maintainer="sparklyballs"
 
 ###############################
 # Build the FFmpeg-build image.
@@ -75,7 +68,13 @@ RUN rm -rf /var/cache/* /tmp/*
 
 ##########################
 # Build the release image.
-FROM alpine:latest
+FROM lsiobase/alpine:3.8
+
+# set version label
+ARG BUILD_DATE
+ARG VERSION
+LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL maintainer="sparklyballs"
 LABEL MAINTAINER Alfred Gutierrez <alf.g.jr@gmail.com>
 
 RUN apk add --update \
@@ -97,7 +96,6 @@ RUN apk add --update \
 COPY --from=build-ffmpeg /usr/local /usr/local
 COPY --from=build-ffmpeg /usr/lib/libfdk-aac.so.1 /usr/lib/libfdk-aac.so.1
 
-
 # package version
 # (stable-download or testing-download)
 ARG NZBGET_BRANCH="stable-download"
@@ -113,7 +111,6 @@ RUN \
  echo "**** install nzbget ****" && \
  mkdir -p \
 	/app/nzbget && \
-  /defaults && \
  curl -o \
  /tmp/json -L \
 	http://nzbget.net/info/nzbget-version-linux.json && \
