@@ -113,6 +113,7 @@ RUN \
  echo "**** install nzbget ****" && \
  mkdir -p \
 	/app/nzbget && \
+  /defaults && \
  curl -o \
  /tmp/json -L \
 	http://nzbget.net/info/nzbget-version-linux.json && \
