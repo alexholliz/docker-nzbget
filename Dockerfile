@@ -1,4 +1,4 @@
-ARG FFMPEG_VERSION=3.4.5
+ARG FFMPEG_VERSION=4.1
 
 ###############################
 # Build the FFmpeg-build image.
