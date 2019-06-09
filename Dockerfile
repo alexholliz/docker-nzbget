@@ -28,7 +28,8 @@ RUN apk add --update \
   x264-dev \
   x265-dev \
   yasm-dev \
-  openssl
+  openssl \
+  openssl-dev
 
 RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories
 RUN apk add --update fdk-aac-dev
