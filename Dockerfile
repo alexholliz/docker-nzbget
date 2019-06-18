@@ -96,7 +96,7 @@ RUN apk add --update \
   x265-dev
 
 COPY --from=build-ffmpeg /usr/local /usr/local
-COPY --from=build-ffmpeg /usr/lib/libfdk-aac.so.1 /usr/lib/libfdk-aac.so.1
+COPY --from=build-ffmpeg /usr/lib/libfdk-aac.so.2 /usr/lib/libfdk-aac.so.2
 
 # package version
 # (stable-download or testing-download)
